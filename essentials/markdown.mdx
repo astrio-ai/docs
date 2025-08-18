@@ -1,0 +1,232 @@
+---
+title: 'Markdown'
+description: 'Learn how to use Markdown in your Astrio documentation'
+---
+
+## MDX Support
+
+Astrio documentation supports MDX, which allows you to use JSX components directly in your Markdown files.
+
+### Basic Markdown
+
+You can use all standard Markdown syntax:
+
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+
+**Bold text** and *italic text*
+
+- Unordered list item
+- Another item
+  - Nested item
+
+1. Ordered list item
+2. Another ordered item
+
+[Link text](https://example.com)
+
+`inline code`
+```
+
+### Code Blocks
+
+Syntax highlighting is automatically applied:
+
+````markdown
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+```python
+def greet(name):
+    return f"Hello, {name}!"
+```
+
+```bash
+npm install astrio-cli
+```
+````
+
+### Interactive Components
+
+Use Astrio's built-in components for enhanced documentation:
+
+#### Cards
+
+```jsx
+<CardGroup cols={2}>
+  <Card title="Getting Started" icon="rocket" href="/quickstart">
+    Quick start guide for new users
+  </Card>
+  <Card title="API Reference" icon="code" href="/api">
+    Complete API documentation
+  </Card>
+</CardGroup>
+```
+
+<CardGroup cols={2}>
+  <Card title="Getting Started" icon="rocket" href="/quickstart">
+    Quick start guide for new users
+  </Card>
+  <Card title="API Reference" icon="code" href="/api">
+    Complete API documentation
+  </Card>
+</CardGroup>
+
+#### Accordions
+
+```jsx
+<AccordionGroup>
+  <Accordion title="What is Astrio?">
+    Astrio is a platform for building applications quickly.
+  </Accordion>
+  <Accordion title="How do I get started?">
+    Follow our quickstart guide to begin building.
+  </Accordion>
+</AccordionGroup>
+```
+
+<AccordionGroup>
+  <Accordion title="What is Astrio?">
+    Astrio is a platform for building applications quickly.
+  </Accordion>
+  <Accordion title="How do I get started?">
+    Follow our quickstart guide to begin building.
+  </Accordion>
+</AccordionGroup>
+
+#### Steps
+
+```jsx
+<Steps>
+  <Step title="Install CLI">
+    Install the Astrio command line interface
+  </Step>
+  <Step title="Create Project">
+    Generate a new Astrio project
+  </Step>
+  <Step title="Deploy">
+    Deploy your application to production
+  </Step>
+</Steps>
+```
+
+<Steps>
+  <Step title="Install CLI">
+    Install the Astrio command line interface
+  </Step>
+  <Step title="Create Project">
+    Generate a new Astrio project
+  </Step>
+  <Step title="Deploy">
+    Deploy your application to production
+  </Step>
+</Steps>
+
+### Callouts
+
+Use callouts to highlight important information:
+
+<Note>
+This is a note callout for general information.
+</Note>
+
+<Tip>
+This is a tip callout for helpful suggestions.
+</Tip>
+
+<Warning>
+This is a warning callout for important notices.
+</Warning>
+
+<Info>
+This is an info callout for additional details.
+</Info>
+
+```jsx
+<Note>
+This is a note callout for general information.
+</Note>
+
+<Tip>
+This is a tip callout for helpful suggestions.
+</Tip>
+
+<Warning>
+This is a warning callout for important notices.
+</Warning>
+
+<Info>
+This is an info callout for additional details.
+</Info>
+```
+
+### Math Support
+
+Astrio supports LaTeX math notation:
+
+Inline math: $E = mc^2$
+
+Block math:
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
+```markdown
+Inline math: $E = mc^2$
+
+Block math:
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+```
+
+### Tables
+
+| Feature | Description | Status |
+| ------- | ----------- | ------ |
+| Authentication | User login/logout | ✅ Complete |
+| Database | Data persistence | ✅ Complete |
+| API Routes | REST endpoints | 🚧 In Progress |
+| Payments | Stripe integration | ⏳ Planned |
+
+### Custom Components
+
+You can create and use custom React components:
+
+```jsx
+import { CustomButton } from '../components/CustomButton';
+
+<CustomButton variant="primary" size="large">
+  Click me!
+</CustomButton>
+```
+
+### Best Practices
+
+<AccordionGroup>
+  <Accordion title="Structure your content">
+    - Use clear headings to organize information
+    - Break up long sections with subheadings
+    - Use bullet points and numbered lists
+    - Include code examples where relevant
+  </Accordion>
+
+  <Accordion title="Make it interactive">
+    - Use Cards to group related links
+    - Implement Steps for processes
+    - Add Accordions for optional details
+    - Include callouts for important information
+  </Accordion>
+
+  <Accordion title="Keep it consistent">
+    - Use consistent formatting across pages
+    - Follow the same structure for similar content
+    - Use appropriate callout types
+    - Maintain consistent code formatting
+  </Accordion>
+</AccordionGroup> 
