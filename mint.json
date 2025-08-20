@@ -69,10 +69,11 @@
       "group": "Features",
       "pages": [
         "features/overview",
-        "features/no-code-builder",
-        "features/ai-assistance",
-        "features/deployment",
-        "features/collaboration"
+        "features/visual-edits",
+        "features/dev-mode",
+        "features/collaboration",
+        "features/custom-domain",
+        "features/publish"
       ]
     },
     {
