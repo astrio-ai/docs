@@ -37,7 +37,11 @@
     {
       "name": "Integrations",
       "url": "integrations"
-    }
+    },
+    {
+        "name": "Best Practices",
+        "url": "best-practices"
+      }
   ],
   "anchors": [
     {
@@ -84,6 +88,14 @@
         "integrations/authentication",
         "integrations/payments",
         "integrations/third-parties"
+      ]
+    },
+    {
+      "group": "Best Practices",
+      "pages": [
+        "best-practices/overview",
+        "best-practices/prompt-efficiency",
+        "best-practices/token-efficiency"
       ]
     }
   ],
