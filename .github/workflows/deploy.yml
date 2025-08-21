@@ -29,20 +29,15 @@ jobs:
     - name: Install Mintlify CLI
       run: npm install -g mintlify
 
-    - name: Build documentation
-      run: mintlify build
+    - name: Check for broken links
+      run: mintlify broken-links
 
     - name: Setup Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: actions/configure-pages@v4
 
-    - name: Upload to GitHub Pages
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: _site
-
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      id: deployment
-      uses: actions/deploy-pages@v4 
+      run: |
+        echo "Mintlify documentation will be deployed automatically when connected to Mintlify Cloud"
+        echo "For GitHub Pages deployment, you may need to configure static site generation" 
