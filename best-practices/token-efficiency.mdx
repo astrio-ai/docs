@@ -1,0 +1,166 @@
+---
+title: 'Token Efficiency'
+description: 'Maximize your token usage for better performance and cost-effectiveness'
+---
+
+## Overview
+
+Maximize your token usage for better performance and cost-effectiveness. Understanding tokens and optimizing your project structure can significantly improve your Astrio experience.
+
+<CardGroup cols={2}>
+  <Card
+    title="Understanding Tokens"
+    icon="microchip"
+    href="#understanding-tokens"
+  >
+    Learn how tokens work and impact processing
+  </Card>
+  <Card
+    title="Using .astrio/ignore"
+    icon="eye-slash"
+    href="#using-astrio-ignore"
+  >
+    Exclude unnecessary files to reduce token consumption
+  </Card>
+  <Card
+    title="Project Splitting"
+    icon="scissors"
+    href="#project-splitting"
+  >
+    Break large projects into focused sections
+  </Card>
+  <Card
+    title="Best Practices"
+    icon="star"
+    href="#best-practices"
+  >
+    Follow proven strategies for token optimization
+  </Card>
+</CardGroup>
+
+## Understanding Tokens
+
+<Steps>
+  <Step title="What Are Tokens">
+    Tokens are units of text processing used by AI models
+  </Step>
+  <Step title="Impact on Performance">
+    Shorter content = fewer tokens = faster processing
+  </Step>
+  <Step title="Quality Over Quantity">
+    Focus on essential information rather than verbose descriptions
+  </Step>
+</Steps>
+
+## Using .astrio/ignore
+
+Create a `.astrio/ignore` file to exclude unnecessary files from processing:
+
+```bash
+node_modules/
+.git/
+*.log
+temp/
+build/
+dist/
+.env
+.DS_Store
+```
+
+<CardGroup cols={2}>
+  <Card
+    title="Reduces Token Consumption"
+    icon="circle-down"
+  >
+    Skip irrelevant content during processing
+  </Card>
+  <Card
+    title="Improves Performance"
+    icon="bolt"
+  >
+    Faster analysis and generation times
+  </Card>
+</CardGroup>
+
+## Project Splitting
+
+Break large projects into smaller, focused sections for better token efficiency:
+
+<Steps>
+  <Step title="Separate by Feature">
+    Create dedicated files for specific functionality
+  </Step>
+  <Step title="Use Clear Naming">
+    Follow consistent file naming conventions
+  </Step>
+  <Step title="Group Related Content">
+    Organize files by topic or purpose
+  </Step>
+</Steps>
+
+### Example Structure
+
+```
+project/
+├── components/
+│   ├── header.mdx
+│   ├── footer.mdx
+│   └── navigation.mdx
+├── features/
+│   ├── authentication.mdx
+│   ├── dashboard.mdx
+│   └── settings.mdx
+└── guides/
+    ├── getting-started.mdx
+    └── advanced-usage.mdx
+```
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card
+    title="Remove Redundancy"
+    icon="trash-can"
+  >
+    Eliminate duplicate or unnecessary content
+  </Card>
+  <Card
+    title="Use Concise Language"
+    icon="message"
+  >
+    Write clearly and directly without fluff
+  </Card>
+  <Card
+    title="Focus on Essentials"
+    icon="bullseye"
+  >
+    Prioritize important information
+  </Card>
+  <Card
+    title="Regular Cleanup"
+    icon="arrows-rotate"
+  >
+    Periodically review and remove outdated files
+  </Card>
+</CardGroup>
+
+## Token Optimization Checklist
+
+<Steps>
+  <Step title="Review File Structure">
+    Organize content logically and eliminate duplicates
+  </Step>
+  <Step title="Update .astrio/ignore">
+    Exclude unnecessary files and directories
+  </Step>
+  <Step title="Split Large Files">
+    Break down lengthy documents into focused sections
+  </Step>
+  <Step title="Optimize Content">
+    Remove redundant information and use concise language
+  </Step>
+</Steps>
+
+<Note>
+Token efficiency isn't just about saving costs—it's about getting faster, more focused results. Start with these practices and refine your approach based on your specific project needs.
+</Note>
