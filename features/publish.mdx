@@ -1,0 +1,287 @@
+---
+title: 'Publish'
+description: 'Deploy to production with automatic scaling, SSL certificates, and global CDN distribution'
+---
+
+## One-Click Production Deployment
+
+Transform your Astrio project from development to production instantly. Deploy globally with enterprise-grade infrastructure, automatic scaling, and monitoring.
+
+## Deployment Features
+
+<CardGroup cols={2}>
+  <Card
+    title="Global CDN"
+    icon="globe"
+  >
+    Deploy to 300+ edge locations worldwide for lightning-fast load times
+  </Card>
+  <Card
+    title="Auto Scaling"
+    icon="chart-line"
+  >
+    Automatically handle traffic spikes without configuration
+  </Card>
+  <Card
+    title="SSL Certificates"
+    icon="shield-check"
+  >
+    Free SSL certificates with automatic renewal
+  </Card>
+  <Card
+    title="Zero Downtime"
+    icon="clock"
+  >
+    Deploy updates without service interruption
+  </Card>
+</CardGroup>
+
+## Deployment Process
+
+<Steps>
+  <Step title="Build Optimization">
+    Astrio automatically optimizes your app for production
+  </Step>
+  <Step title="Quality Checks">
+    Run automated tests and performance audits
+  </Step>
+  <Step title="Deploy">
+    Push to global edge network in under 30 seconds
+  </Step>
+  <Step title="Go Live">
+    Your app is live with monitoring and analytics
+  </Step>
+</Steps>
+
+## Infrastructure
+
+### Global Edge Network
+Your applications are deployed to Astrio's global infrastructure:
+
+- **300+ Edge Locations** - Serve content from the closest location to users
+- **Multi-Region Redundancy** - Automatic failover across regions
+- **DDoS Protection** - Enterprise-grade security against attacks
+- **Load Balancing** - Intelligent traffic distribution
+
+### Performance Optimization
+Every deployment includes automatic optimizations:
+
+```javascript
+// Automatic optimizations applied:
+- Code splitting and tree shaking
+- Image compression and WebP conversion
+- CSS and JavaScript minification
+- Gzip and Brotli compression
+- HTTP/2 and HTTP/3 support
+```
+
+## Scaling and Performance
+
+### Automatic Scaling
+Handle any amount of traffic without configuration:
+
+| Traffic Level | Response Time | Scaling Action |
+|---------------|---------------|----------------|
+| **Low** (< 1k users) | < 100ms | Single instance |
+| **Medium** (1k-100k users) | < 200ms | Auto-scale instances |
+| **High** (100k+ users) | < 300ms | Global distribution |
+| **Extreme** (1M+ users) | < 500ms | Enterprise scaling |
+
+### Performance Monitoring
+Real-time insights into your application performance:
+
+<CardGroup cols={2}>
+  <Card
+    title="Core Web Vitals"
+    icon="gauge"
+  >
+    Monitor LCP, FID, and CLS scores automatically
+  </Card>
+  <Card
+    title="Error Tracking"
+    icon="triangle-exclamation"
+  >
+    Get notified of errors with detailed stack traces
+  </Card>
+  <Card
+    title="Analytics"
+    icon="chart-bar"
+  >
+    Track user behavior and conversion metrics
+  </Card>
+  <Card
+    title="Uptime Monitoring"
+    icon="heartbeat"
+  >
+    99.9% uptime SLA with instant alerts
+  </Card>
+</CardGroup>
+
+## Environment Management
+
+### Multiple Environments
+Manage different stages of your application:
+
+- **Development** - For active development and testing
+- **Staging** - For final testing before production
+- **Production** - Live application serving real users
+
+### Environment Variables
+Securely manage configuration across environments:
+
+```bash
+# Development
+DATABASE_URL=postgres://dev-db.astrio.internal
+API_KEY=dev_key_12345
+
+# Production  
+DATABASE_URL=postgres://prod-db.astrio.internal
+API_KEY=prod_key_67890
+```
+
+### Database Management
+Astrio handles database deployments and migrations:
+- **Automatic backups** every 24 hours
+- **Point-in-time recovery** up to 7 days
+- **Schema migrations** with rollback support
+- **Read replicas** for improved performance
+
+## Security and Compliance
+
+### Security Features
+Enterprise-grade security built-in:
+
+<CardGroup cols={2}>
+  <Card
+    title="WAF Protection"
+    icon="shield"
+  >
+    Web Application Firewall blocks malicious requests
+  </Card>
+  <Card
+    title="Rate Limiting"
+    icon="ban"
+  >
+    Prevent abuse with configurable rate limits
+  </Card>
+  <Card
+    title="IP Whitelisting"
+    icon="list"
+  >
+    Restrict access to specific IP addresses
+  </Card>
+  <Card
+    title="Auth Integration"
+    icon="key"
+  >
+    Built-in authentication and authorization
+  </Card>
+</CardGroup>
+
+### Compliance
+Meet regulatory requirements:
+- **GDPR** - European data protection compliance
+- **CCPA** - California privacy rights compliance
+- **SOC 2 Type II** - Security and availability controls
+- **HIPAA** - Healthcare data protection (Enterprise)
+
+## Monitoring and Alerts
+
+### Real-Time Monitoring
+Stay informed about your application's health:
+
+```yaml
+# Automatic monitoring includes:
+- Response time tracking
+- Error rate monitoring  
+- Traffic pattern analysis
+- Resource utilization metrics
+- Security event logging
+```
+
+### Alert Channels
+Get notified through your preferred channels:
+- **Email** - Instant email notifications
+- **Slack** - Direct integration with Slack channels
+- **Discord** - Webhook integration for Discord
+- **SMS** - Critical alerts via text message
+- **PagerDuty** - Enterprise incident management
+
+## Deployment Strategies
+
+### Blue-Green Deployment
+Zero-downtime deployments with instant rollback:
+
+<Steps>
+  <Step title="Deploy to Green">
+    New version deployed to standby environment
+  </Step>
+  <Step title="Health Check">
+    Automated tests verify the new deployment
+  </Step>
+  <Step title="Switch Traffic">
+    Traffic gradually moved to new version
+  </Step>
+  <Step title="Monitor">
+    Continuous monitoring for any issues
+  </Step>
+</Steps>
+
+### Canary Releases
+Gradual rollout to minimize risk:
+- **1%** of traffic to new version initially
+- **10%** after successful health checks
+- **50%** if metrics remain healthy
+- **100%** for full deployment
+
+## Analytics and Insights
+
+### Performance Analytics
+Understand how your application performs:
+
+- **Page Load Times** - Track loading performance across pages
+- **User Flow Analytics** - See how users navigate your app
+- **Conversion Tracking** - Monitor goal completions
+- **A/B Testing** - Test different versions automatically
+
+### Business Metrics
+Track key business indicators:
+- **Daily/Monthly Active Users** - User engagement metrics
+- **Revenue Tracking** - E-commerce and subscription metrics
+- **Customer Acquisition Cost** - Marketing effectiveness
+- **Retention Rates** - User loyalty measurements
+
+## Backup and Recovery
+
+### Automated Backups
+Never lose your work:
+- **Daily snapshots** of your entire application
+- **Database backups** with point-in-time recovery
+- **Asset backups** including images and files
+- **Configuration backups** for easy restoration
+
+### Disaster Recovery
+Enterprise-grade recovery capabilities:
+- **RTO: 15 minutes** - Recovery time objective
+- **RPO: 1 hour** - Recovery point objective
+- **Multi-region backup** - Geographic redundancy
+- **Automated failover** - Seamless service continuation
+
+## Pricing
+
+### Deployment Tiers
+
+| Plan | Traffic | Storage | Features |
+|------|---------|---------|----------|
+| **Free** | 10k visits/month | 1GB | Basic deployment |
+| **Pro** | 100k visits/month | 10GB | Auto-scaling, analytics |
+| **Business** | 1M visits/month | 100GB | Advanced monitoring |
+| **Enterprise** | Unlimited | Unlimited | SLA, dedicated support |
+
+<Tip>
+Use staging environments to test deployments before pushing to production. This prevents issues from affecting your live users.
+</Tip>
+
+<Warning>
+Always test custom domains and SSL certificates in staging before deploying to production to avoid downtime.
+</Warning>

@@ -1,0 +1,248 @@
+---
+title: 'Dev Mode'
+description: 'View and edit your project code directly in Astrio with a full-featured development environment'
+---
+
+## Full-Stack Development Environment
+
+Dev Mode bridges the gap between no-code simplicity and full development control. Switch seamlessly between visual editing and code editing to customize every aspect of your application.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card
+    title="Code Editor"
+    icon="code"
+  >
+    Full-featured IDE with syntax highlighting and auto-completion
+  </Card>
+  <Card
+    title="Live Preview"
+    icon="eye"
+  >
+    See changes instantly as you type with hot reload
+  </Card>
+  <Card
+    title="Debugging Tools"
+    icon="bug"
+  >
+    Built-in debugger with breakpoints and variable inspection
+  </Card>
+  <Card
+    title="Version Control"
+    icon="code-branch"
+  >
+    Git integration with branch management and commit history
+  </Card>
+</CardGroup>
+
+## Development Workflow
+
+### Seamless Mode Switching
+Switch between visual editing and code editing without losing context:
+
+<Steps>
+  <Step title="Start Visual">
+    Begin with drag-and-drop components in visual mode
+  </Step>
+  <Step title="Switch to Code">
+    Click "Dev Mode" to see the generated code
+  </Step>
+  <Step title="Edit Code">
+    Make custom modifications and add advanced logic
+  </Step>
+  <Step title="Back to Visual">
+    Return to visual mode to see your changes reflected
+  </Step>
+</Steps>
+
+### Code Generation
+Astrio automatically generates clean, readable code:
+- **React/Next.js** for frontend components
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **API routes** for backend functionality
+
+## Code Editor Features
+
+### Advanced IDE Capabilities
+Experience professional development tools:
+
+- **Intelligent auto-completion** - Context-aware suggestions
+- **Syntax highlighting** - Support for 50+ languages
+- **Error detection** - Real-time linting and error highlighting
+- **Code formatting** - Automatic code beautification
+- **Multi-cursor editing** - Edit multiple locations simultaneously
+
+### File Explorer
+Navigate your project structure with ease:
+- **Tree view** of all project files
+- **Search functionality** to quickly find files
+- **File operations** - create, rename, delete files and folders
+- **Import management** - Automatic import organization
+
+### Terminal Integration
+Access a full terminal within Astrio:
+```bash
+# Install packages
+npm install lodash
+
+# Run custom scripts
+npm run build
+
+# Deploy changes
+npm run deploy
+```
+
+## Debugging and Testing
+
+### Built-in Debugger
+Debug your applications without leaving Astrio:
+
+<CardGroup cols={2}>
+  <Card
+    title="Breakpoints"
+    icon="circle-stop"
+  >
+    Set breakpoints and step through code execution
+  </Card>
+  <Card
+    title="Variable Inspector"
+    icon="magnifying-glass"
+  >
+    Inspect variables and object states at runtime
+  </Card>
+  <Card
+    title="Console Output"
+    icon="terminal"
+  >
+    View console logs and error messages
+  </Card>
+  <Card
+    title="Network Monitor"
+    icon="network-wired"
+  >
+    Monitor API calls and network requests
+  </Card>
+</CardGroup>
+
+### Testing Framework
+Write and run tests directly in Astrio:
+- **Unit tests** for individual components
+- **Integration tests** for API endpoints
+- **E2E tests** for complete user flows
+- **Test coverage** reporting
+
+## Advanced Features
+
+### Custom Components
+Create reusable custom components:
+```jsx
+// Create a custom component
+export function CustomButton({ variant, children, onClick }) {
+  return (
+    <button 
+      className={`btn btn-${variant}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  )
+}
+```
+
+### API Development
+Build custom backend functionality:
+```javascript
+// API route example
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const { data } = req.body
+    // Process data
+    res.status(200).json({ success: true })
+  }
+}
+```
+
+### Database Integration
+Connect to databases and external services:
+- **PostgreSQL** and **MySQL** support
+- **MongoDB** for NoSQL needs
+- **Redis** for caching
+- **External APIs** integration
+
+## Performance Optimization
+
+### Code Analysis
+Astrio analyzes your code for:
+- **Performance bottlenecks** identification
+- **Bundle size optimization** suggestions
+- **Unused code detection** and removal
+- **SEO improvements** recommendations
+
+### Build Optimization
+Automatic optimizations for production:
+- **Code splitting** for faster load times
+- **Tree shaking** to remove unused code
+- **Image optimization** for better performance
+- **CDN deployment** for global distribution
+
+## Git Integration
+
+### Version Control
+Full Git functionality within Astrio:
+
+<Steps>
+  <Step title="Initialize Repository">
+    Create a new Git repository for your project
+  </Step>
+  <Step title="Commit Changes">
+    Stage and commit your changes with descriptive messages
+  </Step>
+  <Step title="Branch Management">
+    Create and switch between feature branches
+  </Step>
+  <Step title="Push and Deploy">
+    Push to remote repositories and deploy automatically
+  </Step>
+</Steps>
+
+### Collaboration
+Work with external developers:
+- **Pull request integration** with GitHub/GitLab
+- **Code review tools** for team collaboration
+- **Merge conflict resolution** with visual diff viewer
+- **Branch protection** rules and automated checks
+
+## Security Features
+
+### Code Security
+Astrio helps maintain secure code:
+- **Dependency scanning** for vulnerabilities
+- **Secret detection** to prevent credential leaks
+- **Security best practices** enforcement
+- **Automated security updates** for dependencies
+
+## Migration and Export
+
+### Code Export
+Export your code for external development:
+- **Full source code** with all dependencies
+- **Docker containers** for easy deployment
+- **CI/CD configurations** for automated workflows
+- **Documentation** generation
+
+### Import Projects
+Bring existing projects into Astrio:
+- **GitHub repository** import
+- **Zip file** upload
+- **NPM package** integration
+- **Template customization**
+
+<Tip>
+Use Dev Mode when you need fine-grained control over functionality that's difficult to achieve with visual editing alone.
+</Tip>
+
+<Warning>
+Changes made in Dev Mode may not be fully reversible through visual editing. Always commit your work before making major code changes.
+</Warning>
