@@ -1,0 +1,641 @@
+---
+title: 'Third-Party Integrations'
+description: 'Connect to any REST API, GraphQL service, or custom webhook for unlimited integration possibilities'
+---
+
+## Third-Party API Integrations
+
+Connect Astrio with any external service through REST APIs, GraphQL, webhooks, and custom integrations. Build powerful applications that leverage the entire ecosystem of third-party services.
+
+## Integration Types
+
+<CardGroup cols={2}>
+  <Card
+    title="REST APIs"
+    icon="globe"
+  >
+    Connect to any RESTful API service
+  </Card>
+  <Card
+    title="GraphQL"
+    icon="code"
+  >
+    Modern GraphQL API integrations
+  </Card>
+  <Card
+    title="Webhooks"
+    icon="plug"
+  >
+    Real-time event-driven integrations
+  </Card>
+  <Card
+    title="Custom Connectors"
+    icon="wrench"
+  >
+    Build custom integration logic
+  </Card>
+</CardGroup>
+
+## REST API Integration
+
+### Visual API Builder
+Connect to REST APIs without writing code using our visual interface.
+
+<Steps>
+  <Step title="Add API Endpoint">
+    Enter the API base URL and authentication details
+  </Step>
+  <Step title="Configure Requests">
+    Set up GET, POST, PUT, DELETE requests
+  </Step>
+  <Step title="Map Data">
+    Define how API responses map to your application
+  </Step>
+  <Step title="Test Integration">
+    Verify the connection and data flow
+  </Step>
+</Steps>
+
+### Authentication Methods
+Support for all major API authentication types:
+
+**API Key Authentication:**
+```javascript
+// API Key in headers
+{
+  "Authorization": "Bearer your-api-key",
+  "X-API-Key": "your-api-key"
+}
+
+// API Key in query parameters
+https://api.example.com/data?api_key=your-api-key
+```
+
+**OAuth 2.0:**
+```javascript
+// OAuth 2.0 flow
+const oauthConfig = {
+  clientId: 'your-client-id',
+  clientSecret: 'your-client-secret',
+  authorizationUrl: 'https://api.example.com/oauth/authorize',
+  tokenUrl: 'https://api.example.com/oauth/token',
+  scopes: ['read', 'write']
+}
+```
+
+**Basic Authentication:**
+```javascript
+// Username and password
+const credentials = btoa('username:password');
+headers: {
+  'Authorization': `Basic ${credentials}`
+}
+```
+
+### Request Configuration
+Flexible request setup for any API endpoint.
+
+**HTTP Methods:**
+- **GET** - Retrieve data from the API
+- **POST** - Create new resources
+- **PUT** - Update existing resources
+- **PATCH** - Partial resource updates
+- **DELETE** - Remove resources
+
+**Request Headers:**
+```javascript
+// Common headers
+{
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'User-Agent': 'Astrio-Integration/1.0',
+  'Authorization': 'Bearer token'
+}
+```
+
+**Request Body:**
+```javascript
+// JSON payload
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "age": 30
+}
+
+// Form data
+{
+  "name": "John Doe",
+  "file": "base64-encoded-file"
+}
+```
+
+## GraphQL Integration
+
+### GraphQL Schema Introspection
+Automatically discover and integrate with GraphQL APIs.
+
+**Schema Discovery:**
+```graphql
+# Introspection query
+query IntrospectionQuery {
+  __schema {
+    types {
+      name
+      fields {
+        name
+        type {
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+**Query Builder:**
+- **Visual Query Builder** - Drag-and-drop interface for building queries
+- **Schema Explorer** - Browse available types and fields
+- **Query Validation** - Real-time query validation
+- **Response Preview** - See query results before saving
+
+### GraphQL Features
+Advanced GraphQL integration capabilities.
+
+<CardGroup cols={2}>
+  <Card
+    title="Queries"
+    icon="search"
+  >
+    Fetch data with complex queries
+  </Card>
+  <Card
+    title="Mutations"
+    icon="edit"
+  >
+    Create, update, and delete data
+  </Card>
+  <Card
+    title="Subscriptions"
+    icon="broadcast"
+  >
+    Real-time data updates
+  </Card>
+  <Card
+    title="Fragments"
+    icon="puzzle-piece"
+  >
+    Reusable query components
+  </Card>
+</CardGroup>
+
+**Example GraphQL Integration:**
+```graphql
+# User query with fragments
+fragment UserFields on User {
+  id
+  name
+  email
+  profile {
+    avatar
+    bio
+  }
+}
+
+query GetUser($id: ID!) {
+  user(id: $id) {
+    ...UserFields
+    posts {
+      id
+      title
+      content
+    }
+  }
+}
+```
+
+## Webhook Integration
+
+### Incoming Webhooks
+Receive real-time data from external services.
+
+**Webhook Setup:**
+```javascript
+// Webhook endpoint configuration
+{
+  endpoint: '/webhooks/external-service',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Webhook-Secret': 'your-secret'
+  },
+  validation: 'signature'
+}
+```
+
+**Webhook Security:**
+- **Signature Verification** - Verify webhook authenticity
+- **Secret Validation** - Validate webhook secrets
+- **IP Whitelisting** - Restrict webhook sources
+- **Rate Limiting** - Prevent webhook abuse
+
+### Outgoing Webhooks
+Send data to external services when events occur.
+
+**Event Triggers:**
+```javascript
+// Trigger webhook on user registration
+{
+  event: 'user.created',
+  webhook: 'https://external-service.com/webhook',
+  payload: {
+    userId: '{{user.id}}',
+    email: '{{user.email}}',
+    timestamp: '{{timestamp}}'
+  }
+}
+```
+
+**Webhook Retry Logic:**
+- **Exponential Backoff** - Smart retry with increasing delays
+- **Maximum Retries** - Configurable retry limits
+- **Dead Letter Queue** - Store failed webhooks for review
+- **Success Monitoring** - Track webhook delivery success
+
+## Popular Third-Party Services
+
+### Communication Services
+
+**Slack Integration:**
+```javascript
+// Send message to Slack channel
+{
+  method: 'POST',
+  url: 'https://hooks.slack.com/services/YOUR/WEBHOOK/URL',
+  body: {
+    text: 'New user registered: {{user.name}}',
+    channel: '#notifications'
+  }
+}
+```
+
+**Discord Webhooks:**
+```javascript
+// Discord webhook configuration
+{
+  url: 'https://discord.com/api/webhooks/YOUR/WEBHOOK',
+  content: 'New order received: ${{order.total}}',
+  embeds: [{
+    title: 'Order Details',
+    description: 'Order #{{order.id}}',
+    color: 0x00ff00
+  }]
+}
+```
+
+**Email Services (SendGrid, Mailchimp):**
+```javascript
+// SendGrid email integration
+{
+  method: 'POST',
+  url: 'https://api.sendgrid.com/v3/mail/send',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: {
+    personalizations: [{
+      to: [{ email: '{{user.email}}' }]
+    }],
+    from: { email: 'noreply@yourdomain.com' },
+    subject: 'Welcome to our platform!',
+    content: [{
+      type: 'text/html',
+      value: 'Welcome {{user.name}}!'
+    }]
+  }
+}
+```
+
+### Analytics and Monitoring
+
+**Google Analytics:**
+```javascript
+// Track custom events
+{
+  method: 'POST',
+  url: 'https://www.google-analytics.com/collect',
+  body: {
+    v: 1,
+    tid: 'GA_TRACKING_ID',
+    cid: '{{user.id}}',
+    t: 'event',
+    ec: 'User',
+    ea: 'Registration',
+    el: '{{user.email}}'
+  }
+}
+```
+
+**Mixpanel:**
+```javascript
+// Track user events
+{
+  method: 'POST',
+  url: 'https://api.mixpanel.com/track',
+  body: {
+    event: 'User Registered',
+    properties: {
+      distinct_id: '{{user.id}}',
+      email: '{{user.email}}',
+      time: '{{timestamp}}'
+    }
+  }
+}
+```
+
+### File Storage and Media
+
+**AWS S3:**
+```javascript
+// Upload file to S3
+{
+  method: 'PUT',
+  url: 'https://your-bucket.s3.amazonaws.com/{{file.name}}',
+  headers: {
+    'Authorization': 'AWS4-HMAC-SHA256 Credential=...',
+    'Content-Type': '{{file.type}}'
+  },
+  body: '{{file.data}}'
+}
+```
+
+**Cloudinary:**
+```javascript
+// Upload image to Cloudinary
+{
+  method: 'POST',
+  url: 'https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload',
+  body: {
+    file: '{{file.data}}',
+    public_id: '{{file.name}}',
+    folder: 'users/{{user.id}}'
+  }
+}
+```
+
+## Custom Integration Development
+
+### Custom Connectors
+Build custom integration logic for complex scenarios.
+
+**JavaScript Functions:**
+```javascript
+// Custom data transformation
+function transformUserData(user) {
+  return {
+    external_id: user.id,
+    name: `${user.firstName} ${user.lastName}`,
+    email: user.emailAddress,
+    metadata: {
+      source: 'astrio',
+      created_at: new Date().toISOString()
+    }
+  };
+}
+
+// Custom validation
+function validateWebhook(payload, signature) {
+  const expectedSignature = crypto
+    .createHmac('sha256', process.env.WEBHOOK_SECRET)
+    .update(JSON.stringify(payload))
+    .digest('hex');
+  
+  return signature === expectedSignature;
+}
+```
+
+### Integration Templates
+Pre-built templates for common integration patterns.
+
+**E-commerce Integration:**
+```javascript
+// Shopify integration template
+{
+  name: 'Shopify Integration',
+  endpoints: {
+    products: 'https://{{shop}}.myshopify.com/admin/api/2023-01/products.json',
+    orders: 'https://{{shop}}.myshopify.com/admin/api/2023-01/orders.json',
+    customers: 'https://{{shop}}.myshopify.com/admin/api/2023-01/customers.json'
+  },
+  authentication: {
+    type: 'api_key',
+    header: 'X-Shopify-Access-Token'
+  }
+}
+```
+
+## Data Mapping and Transformation
+
+### Field Mapping
+Map data between your application and external services.
+
+**Simple Mapping:**
+```javascript
+// Direct field mapping
+{
+  "user.name": "external_user.full_name",
+  "user.email": "external_user.email_address",
+  "user.created_at": "external_user.registration_date"
+}
+```
+
+**Complex Transformations:**
+```javascript
+// Data transformation functions
+{
+  "user.full_name": "concat(user.first_name, ' ', user.last_name)",
+  "user.age": "calculate_age(user.birth_date)",
+  "user.status": "if(user.is_active, 'active', 'inactive')"
+}
+```
+
+### Data Validation
+Ensure data integrity across integrations.
+
+**Validation Rules:**
+```javascript
+// Email validation
+{
+  field: 'user.email',
+  type: 'email',
+  required: true
+}
+
+// Phone number validation
+{
+  field: 'user.phone',
+  type: 'phone',
+  format: 'international'
+}
+
+// Custom validation
+{
+  field: 'user.age',
+  validator: 'min:18',
+  message: 'User must be 18 or older'
+}
+```
+
+## Error Handling and Monitoring
+
+### Error Handling
+Comprehensive error handling for integration failures.
+
+**Retry Logic:**
+```javascript
+// Retry configuration
+{
+  maxRetries: 3,
+  retryDelay: 1000, // milliseconds
+  backoffMultiplier: 2,
+  retryOnStatus: [500, 502, 503, 504]
+}
+```
+
+**Error Responses:**
+```javascript
+// Handle different error types
+{
+  '400': 'Bad Request - Check request format',
+  '401': 'Unauthorized - Verify API credentials',
+  '403': 'Forbidden - Check API permissions',
+  '429': 'Rate Limited - Wait before retrying',
+  '500': 'Server Error - Contact service provider'
+}
+```
+
+### Integration Monitoring
+Monitor integration health and performance.
+
+**Health Checks:**
+- **Connection Status** - Verify API connectivity
+- **Response Times** - Monitor API performance
+- **Error Rates** - Track integration failures
+- **Data Quality** - Validate data integrity
+
+**Alerting:**
+```javascript
+// Alert configuration
+{
+  errorThreshold: 5, // errors per minute
+  responseTimeThreshold: 5000, // milliseconds
+  notificationChannels: ['email', 'slack'],
+  escalationPolicy: 'immediate'
+}
+```
+
+## Security and Compliance
+
+### API Security
+Secure your third-party integrations.
+
+<CardGroup cols={2}>
+  <Card
+    title="API Key Management"
+    icon="key"
+  >
+    Secure storage and rotation of API keys
+  </Card>
+  <Card
+    title="Request Signing"
+    icon="signature"
+  >
+    Digital signatures for API requests
+  </Card>
+  <Card
+    title="Rate Limiting"
+    icon="clock"
+  >
+    Prevent API abuse and stay within limits
+  </Card>
+  <Card
+    title="Data Encryption"
+    icon="lock"
+  >
+    Encrypt sensitive data in transit and at rest
+  </Card>
+</CardGroup>
+
+### Compliance Features
+Meet regulatory requirements for data handling.
+
+**Data Protection:**
+- **GDPR Compliance** - European data protection
+- **Data Minimization** - Only collect necessary data
+- **Right to Deletion** - Honor data deletion requests
+- **Audit Logging** - Complete integration audit trail
+
+## Getting Started
+
+### Quick Integration Setup
+Connect to your first third-party service:
+
+<Steps>
+  <Step title="Choose Service">
+    Select the third-party service you want to integrate
+  </Step>
+  <Step title="Get API Credentials">
+    Obtain API keys or authentication details
+  </Step>
+  <Step title="Configure Integration">
+    Set up the integration in Astrio dashboard
+  </Step>
+  <Step title="Test Connection">
+    Verify data flow and error handling
+  </Step>
+</Steps>
+
+### Best Practices
+Optimize your third-party integrations:
+
+<CardGroup cols={2}>
+  <Card
+    title="Start Simple"
+    icon="seedling"
+  >
+    Begin with basic integrations and add complexity
+  </Card>
+  <Card
+    title="Handle Errors"
+    icon="exclamation-triangle"
+  >
+    Implement comprehensive error handling
+  </Card>
+  <Card
+    title="Monitor Performance"
+    icon="gauge"
+  >
+    Track integration health and response times
+  </Card>
+  <Card
+    title="Secure Credentials"
+    icon="shield"
+  >
+    Never expose API keys in client-side code
+  </Card>
+</CardGroup>
+
+### Integration Support
+Need help with complex integrations?
+
+<Note>
+Our integration experts can help you connect to any third-party service. Contact support@astrio.build for custom integration assistance.
+</Note>
+
+<Tip>
+Use webhooks for real-time data synchronization and REST APIs for on-demand data access. GraphQL is great for complex data requirements.
+</Tip>
+
+<Warning>
+Always validate and sanitize data from third-party APIs before using it in your application. Implement proper rate limiting to avoid API abuse.
+</Warning>

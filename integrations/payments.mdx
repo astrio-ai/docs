@@ -1,0 +1,431 @@
+---
+title: 'Payments'
+description: 'Integrate Stripe for secure payment processing with credit cards, digital wallets, and subscriptions'
+---
+
+## Payment Integration
+
+Accept payments securely with Stripe, the world's leading payment processor. Support credit cards, digital wallets, and subscription billing with a simple, reliable integration.
+
+## Why Stripe?
+
+<CardGroup cols={2}>
+  <Card
+    title="Global Reach"
+    icon="globe"
+  >
+    Accept payments from customers worldwide
+  </Card>
+  <Card
+    title="Developer Friendly"
+    icon="code"
+  >
+    Excellent documentation and developer tools
+  </Card>
+  <Card
+    title="Security First"
+    icon="shield"
+  >
+    PCI DSS compliant with advanced fraud protection
+  </Card>
+  <Card
+    title="Flexible Pricing"
+    icon="chart-line"
+  >
+    Simple, transparent pricing with no hidden fees
+  </Card>
+</CardGroup>
+
+## Stripe Integration
+
+### Getting Started with Stripe
+
+<Steps>
+  <Step title="Create Stripe Account">
+    Sign up for a Stripe account at stripe.com
+  </Step>
+  <Step title="Get API Keys">
+    Obtain your publishable and secret keys from Stripe Dashboard
+  </Step>
+  <Step title="Configure in Astrio">
+    Add Stripe integration with your API keys
+  </Step>
+  <Step title="Test Payments">
+    Use Stripe's test mode to verify integration
+  </Step>
+</Steps>
+
+### Stripe Dashboard Setup
+
+1. **Create Stripe Account**
+   - Go to [stripe.com](https://stripe.com) and sign up
+   - Complete your business profile
+   - Verify your identity for account activation
+
+2. **Get API Keys**
+   - Navigate to Developers → API keys
+   - Copy your publishable key and secret key
+   - Keep your secret key secure and never expose it
+
+3. **Configure Webhooks**
+   - Go to Developers → Webhooks
+   - Add endpoint: `https://your-app.astrio.build/webhooks/stripe`
+   - Select events: `payment_intent.succeeded`, `invoice.payment_succeeded`
+
+### Configuration
+
+**Required Credentials:**
+```javascript
+// Stripe configuration
+const stripeConfig = {
+  publishableKey: 'pk_test_your_publishable_key',
+  secretKey: 'sk_test_your_secret_key',
+  webhookSecret: 'whsec_your_webhook_secret',
+  currency: 'usd',
+  paymentMethods: ['card', 'apple_pay', 'google_pay']
+}
+```
+
+**Environment Variables:**
+```bash
+STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key
+STRIPE_SECRET_KEY=sk_test_your_secret_key
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+```
+
+## Payment Methods
+
+### Credit and Debit Cards
+Process card payments with advanced security features.
+
+**Supported Cards:**
+- **Visa** - Global credit and debit card network
+- **Mastercard** - Worldwide payment processing
+- **American Express** - Premium card network
+- **Discover** - US-based payment network
+- **JCB** - Japanese card network
+- **UnionPay** - Chinese payment network
+
+**Security Features:**
+- **PCI DSS Compliance** - Industry-standard security
+- **Tokenization** - Secure card data storage
+- **3D Secure** - Additional authentication layer
+- **Fraud Detection** - Real-time fraud monitoring
+
+### Digital Wallets
+Modern payment methods for mobile-first users.
+
+**Apple Pay**
+- **iOS Integration** - Native iOS payment experience
+- **Touch ID/Face ID** - Biometric authentication
+- **Wallet App** - Store cards in Apple Wallet
+- **Safari Support** - Web payments in Safari
+
+**Google Pay**
+- **Android Integration** - Native Android payment experience
+- **Chrome Support** - Web payments in Chrome
+- **Contactless** - NFC payment support
+- **Rewards** - Integration with loyalty programs
+
+### Bank Transfers
+Direct bank-to-bank payment processing.
+
+**ACH (Automated Clearing House)**
+- **US Bank Transfers** - Direct bank account debits
+- **Low Fees** - Cost-effective for large transactions
+- **Settlement Time** - 1-3 business days
+- **Recurring Payments** - Subscription billing support
+
+**SEPA (Single Euro Payments Area)**
+- **European Transfers** - Eurozone bank transfers
+- **Fast Settlement** - Same-day or next-day processing
+- **Low Costs** - Competitive transfer fees
+- **Wide Coverage** - 36 European countries
+
+## Subscription and Recurring Billing
+
+### Subscription Management
+Handle recurring payments and subscription lifecycles.
+
+**Subscription Features:**
+- **Flexible Billing** - Monthly, yearly, or custom intervals
+- **Trial Periods** - Free trial with automatic conversion
+- **Proration** - Automatic billing adjustments
+- **Dunning Management** - Failed payment retry logic
+
+**Implementation Example:**
+```javascript
+// Create subscription
+const subscription = await stripe.subscriptions.create({
+  customer: customerId,
+  items: [{ price: 'price_monthly_plan' }],
+  trial_period_days: 14,
+  payment_behavior: 'default_incomplete',
+  expand: ['latest_invoice.payment_intent']
+});
+```
+
+### Usage-Based Billing
+Charge customers based on actual usage.
+
+**Metered Billing:**
+- **API Calls** - Charge per API request
+- **Storage Usage** - Charge per GB stored
+- **User Count** - Charge per active user
+- **Feature Usage** - Charge per feature used
+
+## E-commerce Features
+
+### Shopping Cart Integration
+Complete e-commerce payment processing.
+
+**Cart Features:**
+- **Product Management** - Add, remove, and update items
+- **Tax Calculation** - Automatic tax computation
+- **Shipping Options** - Multiple shipping methods
+- **Discount Codes** - Coupon and promotion support
+
+### Order Management
+Comprehensive order processing and fulfillment.
+
+**Order Workflow:**
+1. **Order Creation** - Customer places order
+2. **Payment Processing** - Secure payment collection
+3. **Order Confirmation** - Email confirmation sent
+4. **Fulfillment** - Order processing and shipping
+5. **Delivery Tracking** - Real-time delivery updates
+
+## Security and Compliance
+
+### Payment Security
+Enterprise-grade security for payment processing.
+
+<CardGroup cols={2}>
+  <Card
+    title="PCI DSS Compliance"
+    icon="shield"
+  >
+    Industry-standard payment security
+  </Card>
+  <Card
+    title="Encryption"
+    icon="lock"
+  >
+    End-to-end data encryption
+  </Card>
+  <Card
+    title="Fraud Protection"
+    icon="user-shield"
+  >
+    Advanced fraud detection systems
+  </Card>
+  <Card
+    title="Tokenization"
+    icon="key"
+  >
+    Secure card data storage
+  </Card>
+</CardGroup>
+
+### Compliance Requirements
+Meet regulatory requirements for payment processing.
+
+**Global Compliance:**
+- **GDPR** - European data protection
+- **PSD2** - European payment services directive
+- **SOX** - Sarbanes-Oxley compliance
+- **PCI DSS** - Payment card industry standards
+
+## Analytics and Reporting
+
+### Payment Analytics
+Comprehensive insights into payment performance.
+
+**Key Metrics:**
+- **Transaction Volume** - Total payment volume
+- **Success Rate** - Percentage of successful payments
+- **Average Order Value** - Mean transaction amount
+- **Payment Method Distribution** - Usage by payment type
+
+### Financial Reporting
+Detailed financial reports and reconciliation.
+
+**Report Types:**
+- **Daily Settlements** - Daily payment summaries
+- **Monthly Statements** - Comprehensive monthly reports
+- **Tax Reports** - Tax calculation and reporting
+- **Reconciliation** - Match payments with orders
+
+## Webhook Integration
+
+### Payment Webhooks
+Real-time payment event notifications.
+
+**Common Webhook Events:**
+```javascript
+// Payment webhook events
+const webhookEvents = {
+  'payment_intent.succeeded': 'Payment completed successfully',
+  'payment_intent.payment_failed': 'Payment failed',
+  'invoice.payment_succeeded': 'Subscription payment received',
+  'customer.subscription.created': 'New subscription started',
+  'charge.dispute.created': 'Payment dispute filed'
+}
+```
+
+**Webhook Security:**
+- **Signature Verification** - Verify webhook authenticity
+- **Idempotency** - Prevent duplicate processing
+- **Retry Logic** - Handle webhook delivery failures
+- **Event Logging** - Complete audit trail
+
+## Testing and Development
+
+### Test Mode
+Safe testing environment for payment integration.
+
+**Test Features:**
+- **Test Cards** - Use provided test card numbers
+- **Test Accounts** - Separate test merchant accounts
+- **Simulated Responses** - Test various payment scenarios
+- **No Real Charges** - Zero risk testing environment
+
+**Test Card Numbers:**
+```bash
+# Stripe test cards
+Visa: 4242424242424242
+Mastercard: 5555555555554444
+American Express: 378282246310005
+
+# Test scenarios
+Declined: 4000000000000002
+Insufficient funds: 4000000000009995
+Expired card: 4000000000000069
+```
+
+## Integration Examples
+
+### React Component Example
+```jsx
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+
+function PaymentForm() {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    if (!stripe || !elements) {
+      return;
+    }
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+    });
+
+    if (error) {
+      console.log('[error]', error);
+    } else {
+      // Send paymentMethod.id to your server
+      console.log('[PaymentMethod]', paymentMethod);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <CardElement />
+      <button type="submit" disabled={!stripe}>
+        Pay
+      </button>
+    </form>
+  );
+}
+```
+
+### Server-Side Payment Processing
+```javascript
+// Create payment intent
+const paymentIntent = await stripe.paymentIntents.create({
+  amount: 2000, // $20.00
+  currency: 'usd',
+  customer: customerId,
+  metadata: {
+    order_id: 'order_123'
+  }
+});
+
+// Confirm payment
+const paymentIntent = await stripe.paymentIntents.confirm(
+  'pi_1234567890',
+  {
+    payment_method: 'pm_1234567890'
+  }
+);
+```
+
+## Getting Started
+
+### Quick Setup
+Get Stripe payments working in minutes:
+
+<Steps>
+  <Step title="Create Account">
+    Sign up for a Stripe account
+  </Step>
+  <Step title="Get API Keys">
+    Obtain your publishable and secret keys
+  </Step>
+  <Step title="Configure Integration">
+    Add Stripe integration to your Astrio app
+  </Step>
+  <Step title="Test Payments">
+    Use test mode to verify everything works
+  </Step>
+</Steps>
+
+### Best Practices
+Optimize your Stripe integration:
+
+<CardGroup cols={2}>
+  <Card
+    title="Security First"
+    icon="shield-check"
+  >
+    Always use HTTPS and secure API keys
+  </Card>
+  <Card
+    title="Error Handling"
+    icon="exclamation-triangle"
+  >
+    Implement comprehensive error handling
+  </Card>
+  <Card
+    title="User Experience"
+    icon="user"
+  >
+    Provide clear payment feedback
+  </Card>
+  <Card
+    title="Testing"
+    icon="vial"
+  >
+    Test thoroughly in test mode
+  </Card>
+</CardGroup>
+
+### Migration Support
+Moving from another payment system?
+
+<Note>
+Our payment experts can help you migrate from any payment processor to Stripe. Contact support@astrio.build for migration assistance.
+</Note>
+
+<Tip>
+Start with Stripe's test mode to build and test your integration before going live. Use the provided test card numbers for safe testing.
+</Tip>
+
+<Warning>
+Never store sensitive payment data like credit card numbers in your application. Always use Stripe's tokenization and secure payment processing.
+</Warning>

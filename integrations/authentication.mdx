@@ -1,0 +1,401 @@
+---
+title: 'Authentication'
+description: 'Integrate with Google OAuth and GitHub for secure user authentication'
+---
+
+## Authentication Integrations
+
+Secure your Astrio applications with Google OAuth and GitHub authentication. Simple, reliable, and trusted authentication methods that your users already know and trust.
+
+## Supported Providers
+
+<CardGroup cols={2}>
+  <Card
+    title="Google OAuth"
+    icon="google"
+  >
+    Most popular social login with extensive user base
+  </Card>
+  <Card
+    title="GitHub OAuth"
+    icon="github"
+  >
+    Perfect for developer-focused applications
+  </Card>
+</CardGroup>
+
+## Google OAuth
+
+### Why Google OAuth?
+
+Google OAuth is the most popular social login provider, offering:
+- **Wide User Base** - Billions of users worldwide
+- **Trusted Brand** - Users trust Google with their data
+- **Rich Profile Data** - Access to email, name, profile picture
+- **Easy Setup** - Simple configuration process
+
+### Setup Process
+
+<Steps>
+  <Step title="Create OAuth App">
+    Go to Google Cloud Console and create OAuth 2.0 credentials
+  </Step>
+  <Step title="Configure Scopes">
+    Set required scopes: email, profile, openid
+  </Step>
+  <Step title="Add to Astrio">
+    Enter your Client ID and Client Secret in Astrio dashboard
+  </Step>
+  <Step title="Test Login">
+    Verify the authentication flow works correctly
+  </Step>
+</Steps>
+
+### Google Cloud Console Setup
+
+1. **Navigate to Google Cloud Console**
+   - Go to [console.cloud.google.com](https://console.cloud.google.com)
+   - Create a new project or select existing one
+
+2. **Enable Google+ API**
+   - Go to "APIs & Services" → "Library"
+   - Search for "Google+ API" and enable it
+
+3. **Create OAuth Credentials**
+   - Go to "APIs & Services" → "Credentials"
+   - Click "Create Credentials" → "OAuth 2.0 Client IDs"
+   - Choose "Web application" as application type
+
+4. **Configure OAuth Consent Screen**
+   - Set app name, user support email, and developer contact
+   - Add authorized domains
+   - Configure scopes (email, profile, openid)
+
+### Configuration
+
+**Required Credentials:**
+```javascript
+// Google OAuth configuration
+const googleConfig = {
+  clientId: 'your-google-client-id.apps.googleusercontent.com',
+  clientSecret: 'your-google-client-secret',
+  redirectUri: 'https://your-app.astrio.build/auth/google/callback',
+  scopes: ['email', 'profile', 'openid']
+}
+```
+
+**Environment Variables:**
+```bash
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URI=https://your-app.astrio.build/auth/google/callback
+```
+
+### User Data Available
+
+When users authenticate with Google, you get access to:
+
+**Profile Information:**
+- **Email Address** - Primary email from Google account
+- **Full Name** - User's first and last name
+- **Profile Picture** - User's Google profile photo
+- **Locale** - User's language and region preferences
+
+**Account Details:**
+- **Google Account ID** - Unique identifier for the user
+- **Email Verification** - Whether email is verified
+- **Account Type** - Personal or Google Workspace account
+
+## GitHub OAuth
+
+### Why GitHub OAuth?
+
+GitHub OAuth is ideal for:
+- **Developer Tools** - Perfect for developer-focused applications
+- **Open Source Projects** - Connect with the open source community
+- **Technical Users** - Developers already have GitHub accounts
+- **Repository Access** - Access to user's public repositories
+
+### Setup Process
+
+<Steps>
+  <Step title="Create OAuth App">
+    Go to GitHub Developer Settings and create a new OAuth App
+  </Step>
+  <Step title="Configure Permissions">
+    Set required scopes: user:email, read:user
+  </Step>
+  <Step title="Add to Astrio">
+    Enter your Client ID and Client Secret in Astrio dashboard
+  </Step>
+  <Step title="Test Integration">
+    Verify the authentication flow works correctly
+  </Step>
+</Steps>
+
+### GitHub Developer Settings
+
+1. **Navigate to GitHub Settings**
+   - Go to GitHub.com → Settings → Developer settings
+   - Click "OAuth Apps" → "New OAuth App"
+
+2. **Configure OAuth App**
+   - **Application name**: Your app name
+   - **Homepage URL**: Your app's homepage
+   - **Authorization callback URL**: `https://your-app.astrio.build/auth/github/callback`
+
+3. **Set Permissions**
+   - **User permissions**: Email addresses (read-only)
+   - **User permissions**: Profile (read-only)
+
+### Configuration
+
+**Required Credentials:**
+```javascript
+// GitHub OAuth configuration
+{
+  clientId: "your-github-client-id",
+  clientSecret: "your-github-client-secret",
+  redirectUri: "https://your-app.astrio.build/auth/github/callback",
+  scopes: ["user:email", "read:user"]
+}
+```
+
+**Environment Variables:**
+```bash
+GITHUB_CLIENT_ID=your-github-client-id
+GITHUB_CLIENT_SECRET=your-github-client-secret
+GITHUB_REDIRECT_URI=https://your-app.astrio.build/auth/github/callback
+```
+
+### Available Scopes
+
+**Basic Scopes:**
+- **user:email** - Access to user's email addresses
+- **read:user** - Read access to user profile
+
+**Advanced Scopes (use carefully):**
+- **repo** - Full repository access (public and private)
+- **workflow** - GitHub Actions workflow access
+- **admin:org** - Organization administration access
+
+### User Data Available
+
+When users authenticate with GitHub, you get access to:
+
+**Profile Information:**
+- **Username** - GitHub username
+- **Full Name** - User's real name
+- **Email Addresses** - All email addresses associated with account
+- **Profile Picture** - User's GitHub avatar
+- **Bio** - User's GitHub bio
+
+**Account Details:**
+- **GitHub ID** - Unique numeric identifier
+- **Account Type** - User or Organization
+- **Public Repositories** - List of public repositories
+- **Followers/Following** - Social connections
+
+## Authentication Flow
+
+### OAuth 2.0 Flow
+
+The authentication process follows the standard OAuth 2.0 authorization code flow:
+
+<Steps>
+  <Step title="User Clicks Login">
+    User clicks "Sign in with Google" or "Sign in with GitHub"
+  </Step>
+  <Step title="Redirect to Provider">
+    User is redirected to Google/GitHub authorization page
+  </Step>
+  <Step title="User Authorizes">
+    User grants permission to your application
+  </Step>
+  <Step title="Authorization Code">
+    Provider redirects back with authorization code
+  </Step>
+  <Step title="Exchange for Token">
+    Astrio exchanges code for access token
+  </Step>
+  <Step title="Get User Data">
+    Fetch user profile using access token
+  </Step>
+  <Step title="Create Session">
+    Create user session and redirect to app
+  </Step>
+</Steps>
+
+### Security Features
+
+<CardGroup cols={2}>
+  <Card
+    title="Secure Tokens"
+    icon="key"
+  >
+    JWT tokens with automatic refresh
+  </Card>
+  <Card
+    title="State Validation"
+    icon="shield"
+  >
+    Prevent CSRF attacks with state parameter
+  </Card>
+  <Card
+    title="HTTPS Only"
+    icon="lock"
+  >
+    All authentication over secure connections
+  </Card>
+  <Card
+    title="Token Storage"
+    icon="database"
+  >
+    Secure server-side token storage
+  </Card>
+</CardGroup>
+
+## User Management
+
+### User Profiles
+Comprehensive user profile management:
+
+**Profile Features:**
+- **Automatic Profile Creation** - Profiles created on first login
+- **Profile Updates** - Sync profile data on each login
+- **Custom Fields** - Add custom user attributes
+- **Profile Pictures** - Automatic avatar from provider
+
+### Session Management
+Secure session handling and management:
+
+**Session Features:**
+- **JWT Tokens** - Secure JSON Web Tokens for authentication
+- **Refresh Tokens** - Automatic token refresh for long sessions
+- **Session Timeout** - Configurable session expiration
+- **Multi-Device Support** - Login from multiple devices
+
+## Integration Examples
+
+### React Component Example
+```jsx
+import { useAuth } from '@astrio/auth';
+
+function LoginButtons() {
+  const { login, logout, user } = useAuth();
+
+  if (user) {
+    return (
+      <div>
+        <p>Welcome, {user.name}!</p>
+        <img src={user.avatar} alt="Profile" />
+        <button onClick={logout}>Logout</button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <button onClick={() => login('google')}>
+        Sign in with Google
+      </button>
+      <button onClick={() => login('github')}>
+        Sign in with GitHub
+      </button>
+    </div>
+  );
+}
+```
+
+### API Authentication
+```javascript
+// Protected API route
+export default async function handler(req, res) {
+  // Verify authentication token
+  const user = await verifyToken(req.headers.authorization);
+  
+  if (!user) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  // Handle authenticated request
+  const data = await getProtectedData(user.id);
+  res.json(data);
+}
+```
+
+### User Data Access
+```javascript
+// Access user data in your application
+const user = await getCurrentUser();
+
+console.log('User ID:', user.id);
+console.log('Email:', user.email);
+console.log('Name:', user.name);
+console.log('Avatar:', user.avatar);
+console.log('Provider:', user.provider); // 'google' or 'github'
+```
+
+## Getting Started
+
+### Quick Setup
+Get authentication working in minutes:
+
+<Steps>
+  <Step title="Choose Provider">
+    Select Google OAuth or GitHub OAuth
+  </Step>
+  <Step title="Create OAuth App">
+    Set up OAuth application with your chosen provider
+  </Step>
+  <Step title="Configure in Astrio">
+    Add authentication integration with your credentials
+  </Step>
+  <Step title="Test Login">
+    Verify login and logout functionality
+  </Step>
+</Steps>
+
+### Best Practices
+
+<CardGroup cols={2}>
+  <Card
+    title="Start with Google"
+    icon="google"
+  >
+    Google OAuth has the broadest user compatibility
+  </Card>
+  <Card
+    title="Add GitHub Later"
+    icon="github"
+  >
+    Add GitHub for developer-focused features
+  </Card>
+  <Card
+    title="Handle Errors"
+    icon="triangle-exclamation"
+  >
+    Implement proper error handling for auth failures
+  </Card>
+  <Card
+    title="User Feedback"
+    icon="user"
+  >
+    Provide clear feedback during authentication process
+  </Card>
+</CardGroup>
+
+### Migration Guide
+Migrating from existing authentication system?
+
+<Note>
+Our authentication experts can help you migrate from any authentication system to Astrio. Contact support@astrio.build for migration assistance.
+</Note>
+
+<Tip>
+Start with Google OAuth for the easiest setup and broadest user compatibility. Add GitHub OAuth later for developer-focused features.
+</Tip>
+
+<Warning>
+Always implement proper error handling and user feedback for authentication failures. Never store sensitive authentication data in client-side code.
+</Warning>

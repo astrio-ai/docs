@@ -83,7 +83,7 @@
         "integrations/databases",
         "integrations/authentication",
         "integrations/payments",
-        "integrations/third-party"
+        "integrations/third-parties"
       ]
     }
   ],
