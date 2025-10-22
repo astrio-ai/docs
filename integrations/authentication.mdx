@@ -79,7 +79,7 @@ Google OAuth is the most popular social login provider, offering:
 const googleConfig = {
   clientId: 'your-google-client-id.apps.googleusercontent.com',
   clientSecret: 'your-google-client-secret',
-  redirectUri: 'https://your-app.astrio.build/auth/google/callback',
+  redirectUri: 'https://your-app.astrio.app/auth/google/callback',
   scopes: ['email', 'profile', 'openid']
 }
 ```
@@ -88,7 +88,7 @@ const googleConfig = {
 ```bash
 GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=your-google-client-secret
-GOOGLE_REDIRECT_URI=https://your-app.astrio.build/auth/google/callback
+GOOGLE_REDIRECT_URI=https://your-app.astrio.app/auth/google/callback
 ```
 
 ### User Data Available
@@ -142,7 +142,7 @@ GitHub OAuth is ideal for:
 2. **Configure OAuth App**
    - **Application name**: Your app name
    - **Homepage URL**: Your app's homepage
-   - **Authorization callback URL**: `https://your-app.astrio.build/auth/github/callback`
+   - **Authorization callback URL**: `https://your-app.astrio.app/auth/github/callback`
 
 3. **Set Permissions**
    - **User permissions**: Email addresses (read-only)
@@ -156,7 +156,7 @@ GitHub OAuth is ideal for:
 {
   clientId: "your-github-client-id",
   clientSecret: "your-github-client-secret",
-  redirectUri: "https://your-app.astrio.build/auth/github/callback",
+  redirectUri: "https://your-app.astrio.app/auth/github/callback",
   scopes: ["user:email", "read:user"]
 }
 ```
@@ -165,7 +165,7 @@ GitHub OAuth is ideal for:
 ```bash
 GITHUB_CLIENT_ID=your-github-client-id
 GITHUB_CLIENT_SECRET=your-github-client-secret
-GITHUB_REDIRECT_URI=https://your-app.astrio.build/auth/github/callback
+GITHUB_REDIRECT_URI=https://your-app.astrio.app/auth/github/callback
 ```
 
 ### Available Scopes
@@ -389,7 +389,7 @@ Get authentication working in minutes:
 Migrating from existing authentication system?
 
 <Note>
-Our authentication experts can help you migrate from any authentication system to Astrio. Contact support@astrio.build for migration assistance.
+Our authentication experts can help you migrate from any authentication system to Astrio. Contact support@astrio.app for migration assistance.
 </Note>
 
 <Tip>
