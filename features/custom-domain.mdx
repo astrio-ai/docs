@@ -1,6 +1,6 @@
 ---
 title: 'Custom Domain'
-description: 'Connect your own domain to any Astrio project for a professional branded experience'
+description: 'Connect an existing domain or subdomain to your published Astrio project with DNS verification and SSL'
 ---
 
 ## Professional Branding with Custom Domains
@@ -12,7 +12,7 @@ Transform your Astrio projects with custom domains to create a professional, bra
 <CardGroup cols={2}>
   <Card
     title="Brand Recognition"
-    icon="star"
+    icon="stars"
   >
     Use your own domain to build trust and brand recognition
   </Card>
@@ -23,10 +23,10 @@ Transform your Astrio projects with custom domains to create a professional, bra
     Improve search engine rankings with your own domain authority
   </Card>
   <Card
-    title="Professional Appearance"
-    icon="briefcase"
+    title="Memorability"
+    icon="brain"
   >
-    Remove Astrio branding for a completely custom experience
+    Easier for users to remember and share your project
   </Card>
   <Card
     title="SSL Included"
@@ -47,163 +47,50 @@ Use subdomains like `app.yourcompany.com` or `demo.yourcompany.com` for differen
 ### Multiple Domains
 Connect multiple domains to the same project or use different domains for different projects.
 
-## Setup Process
+Astrio does **not** sell domains. You connect a **domain or subdomain you already control** and verify it with DNS.
+
+## Prerequisites
+
+1. You have owner or editor permissions to connect and disconnect domains.
+2. **[Publish your project](/features/publish)** first. Custom domain setup is available after the project is published.
+3. You have access to the DNS settings for the domain or subdomain you want to connect. Ownership verification requires adding the DNS CNAME records Astrio provides you during setup.
+
+## Connect your domain
+
+Follow these steps:
 
 <Steps>
-  <Step title="Purchase Domain">
-    Buy your domain from any registrar (GoDaddy, Namecheap, Google Domains, etc.)
+  <Step title="Add a custom domain">
+    After you publish, open the **Publish** modal. Use **Add custom domain** to open the **Domain** tab in the project **Settings** panel.
   </Step>
-  <Step title="Add Domain in Astrio">
-    Navigate to Project Settings → Custom Domain and enter your domain
+  <Step title="Enter your domain">
+    Enter your domain or subdomain (for example, `yourdomain.com` or `blog.yourdomain.com`). Click **Request certificate** so Astrio can start validation and show the DNS records you need.
   </Step>
-  <Step title="Configure DNS">
-    Update your domain's DNS settings with the provided records
-  </Step>
-  <Step title="Verify Connection">
-    Astrio will automatically verify and provision SSL certificates
+  <Step title="Configure DNS records">
+    Astrio displays the DNS records you must add. They are **unique to your project**—always copy the **Name** and **Value** from the app, not from examples. In general:
+
+    | Field | What it is |
+    | ----- | ---------- |
+    | **Type** | Usually `CNAME` |
+    | **Name** | The **hostname** Astrio gives you to create at your DNS provider (copy it exactly, including any leading underscore or trailing dot) |
+    | **Value** | The **target** Astrio gives you (often a long hostname used for certificate validation—copy it exactly) |
+
+    In your DNS provider (for example Cloudflare, Route 53, or your registrar), create the CNAME exactly as shown.
+
+    <Warning>
+      If your provider supports a **proxy** (orange cloud in Cloudflare, etc.), **turn it off** for this validation record. Proxied records can block certificate validation.
+    </Warning>
+
+    Verification often completes in **about 1–15 minutes**, but DNS can take **up to 24–72 hours** to propagate everywhere.
+
+    Use **Refresh status** in Astrio to re-check. When records are detected, click **Check DNS & activate**.
+
+    Wait until the domain status is **Live**. Once the CNAME points correctly, Astrio can **issue SSL certificates** for your domain.
+
+    You can **remove the custom domain** later from the same settings if you need to disconnect it.
   </Step>
 </Steps>
 
-## DNS Configuration
+## Verify DNS
 
-### For Root Domains (yoursite.com)
-
-Add these DNS records at your domain registrar:
-
-```
-Type: A
-Name: @
-Value: 76.76.19.123
-
-Type: CNAME  
-Name: www
-Value: cname.astrio.app
-```
-
-### For Subdomains (app.yoursite.com)
-
-Add this DNS record:
-
-```
-Type: CNAME
-Name: app (or your chosen subdomain)
-Value: cname.astrio.app
-```
-
-<Note>
-DNS changes can take up to 48 hours to propagate worldwide, though they usually take effect within a few hours.
-</Note>
-
-## SSL Certificates
-
-### Automatic SSL
-Astrio automatically provisions and manages SSL certificates for all custom domains using Let's Encrypt.
-
-### Features
-- **Free SSL certificates** - No additional cost
-- **Auto-renewal** - Certificates renew automatically before expiration
-- **Wildcard support** - Covers all subdomains when applicable
-- **Modern encryption** - TLS 1.3 support for maximum security
-
-## Domain Management
-
-### Domain Dashboard
-Monitor all your custom domains from a centralized dashboard:
-
-- **Status monitoring** - See which domains are active, pending, or have issues
-- **Certificate status** - Check SSL certificate validity and renewal dates
-- **Traffic analytics** - View domain-specific traffic and performance metrics
-
-### Domain Validation
-Astrio validates domain ownership through:
-- DNS record verification
-- HTTP file validation (when applicable)
-- Email verification for certain domain types
-
-## Advanced Features
-
-### Redirects
-Set up automatic redirects:
-- **www to non-www** or vice versa
-- **HTTP to HTTPS** (enabled by default)
-- **Custom redirect rules** for specific paths
-
-### CDN Integration
-All custom domains benefit from Astrio's global CDN:
-- **Edge caching** for faster load times worldwide
-- **DDoS protection** against malicious traffic
-- **Image optimization** for better performance
-
-## Troubleshooting
-
-### Common Issues
-
-<AccordionGroup>
-  <Accordion title="Domain not connecting">
-    **Check DNS settings**: Ensure DNS records are correctly configured
-    
-    **Wait for propagation**: DNS changes can take up to 48 hours
-    
-    **Verify domain spelling**: Double-check for typos in domain name
-  </Accordion>
-  
-  <Accordion title="SSL certificate issues">
-    **Domain validation**: Ensure domain is properly validated
-    
-    **Clear browser cache**: Try accessing the site in incognito mode
-    
-    **Check certificate status**: View certificate details in domain dashboard
-  </Accordion>
-  
-  <Accordion title="Redirect loops">
-    **Check redirect settings**: Ensure no conflicting redirect rules
-    
-    **DNS configuration**: Verify CNAME records are pointing correctly
-    
-    **Browser cache**: Clear cache and cookies for the domain
-  </Accordion>
-</AccordionGroup>
-
-## Best Practices
-
-<CardGroup cols={2}>
-  <Card
-    title="Use HTTPS"
-    icon="lock"
-  >
-    Always use HTTPS for security and SEO benefits
-  </Card>
-  <Card
-    title="Monitor Performance"
-    icon="gauge"
-  >
-    Regular check domain performance and SSL status
-  </Card>
-  <Card
-    title="Backup DNS"
-    icon="hard-drive"
-  >
-    Keep records of your DNS settings
-  </Card>
-  <Card
-    title="Test Thoroughly"
-    icon="vial"
-  >
-    Test your domain from different locations and devices
-  </Card>
-</CardGroup>
-
-## Pricing
-
-Custom domains are included in all Astrio plans:
-- **Free Plan**: 1 custom domain per project
-- **Pro Plan**: Unlimited custom domains
-- **Enterprise**: Unlimited domains with priority support
-
-<Tip>
-Set up your custom domain early in development to ensure a smooth launch experience.
-</Tip>
-
-<Warning>
-Changing custom domains after launch may affect SEO rankings and user bookmarks. Plan your domain strategy carefully.
-</Warning>
+Use a DNS lookup tool such as [dnschecker.org](https://dnschecker.org) to confirm your name resolves to the records Astrio expects. Large TTLs or caching can delay what you see locally; changes can take up to 72 hours in rare cases.

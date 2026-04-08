@@ -19,7 +19,7 @@
   "topbarLinks": [
     {
       "name": "Community",
-      "url": "https://discord.gg/mMspVRXbNX"
+      "url": "https://discord.gg/VRRPuNGKeS"
     }
   ],
   "topbarCtaButton": {
@@ -53,7 +53,7 @@
     {
       "name": "Community",
       "icon": "discord",
-      "url": "https://discord.gg/mMspVRXbNX"
+      "url": "https://discord.gg/VRRPuNGKeS"
     },
     {
       "name": "Blog",
@@ -71,14 +71,28 @@
       ]
     },
     {
-      "group": "Features",
+      "group": "Modernize",
       "pages": [
-        "features/overview",
-        "features/visual-edits",
-        "features/dev-mode",
-        "features/collaboration",
-        "features/custom-domain",
-        "features/publish"
+        "features/dev-mode"
+      ]
+    },
+    {
+      "group": "Design",
+      "pages": [
+        "features/visual-edits"
+      ]
+    },
+    {
+      "group": "Collaborate",
+      "pages": [
+        "features/collaboration"
+      ]
+    },
+    {
+      "group": "Publish",
+      "pages": [
+        "features/publish",
+        "features/custom-domain"
       ]
     },
     {
@@ -100,6 +114,9 @@
       ]
     }
   ],
+  "contextual": {
+    "options": ["copy", "view"]
+  },
   "feedback": {
     "thumbsRating": true,
     "suggestEdit": true,
@@ -112,8 +129,8 @@
   "footerSocials": {
     "x": "https://x.com/astrioai",
     "linkedin": "https://www.linkedin.com/company/astrioai",
-    "instagram": "https://www.instagram.com/astrio_ai",
+    "instagram": "https://www.instagram.com/astrioai",
     "github": "https://github.com/astrio-ai",
-    "discord": "https://discord.gg/mMspVRXbNX"
+    "discord": "https://discord.gg/VRRPuNGKeS"
   }
 } 
