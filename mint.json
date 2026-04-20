@@ -36,10 +36,6 @@
       "url": "features"
     },
     {
-      "name": "Integrations",
-      "url": "integrations"
-    },
-    {
         "name": "Best Practices",
         "url": "best-practices"
       }
@@ -71,38 +67,13 @@
       ]
     },
     {
-      "group": "Modernize",
+      "group": "Features",
       "pages": [
-        "features/dev-mode"
-      ]
-    },
-    {
-      "group": "Design",
-      "pages": [
-        "features/visual-edits"
-      ]
-    },
-    {
-      "group": "Collaborate",
-      "pages": [
-        "features/collaboration"
-      ]
-    },
-    {
-      "group": "Publish",
-      "pages": [
+        "features/visual-edits",
+        "features/share",
         "features/publish",
-        "features/custom-domain"
-      ]
-    },
-    {
-      "group": "Integrations",
-      "pages": [
-        "integrations/overview",
-        "integrations/databases",
-        "integrations/authentication",
-        "integrations/payments",
-        "integrations/third-parties"
+        "features/custom-domains",
+        "features/payments"
       ]
     },
     {
