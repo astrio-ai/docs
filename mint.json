@@ -70,7 +70,9 @@
       "group": "Features",
       "pages": [
         "features/visual-edits",
+        "features/brand",
         "features/share",
+        "features/profile",
         "features/publish",
         "features/custom-domains",
         "features/payments"
