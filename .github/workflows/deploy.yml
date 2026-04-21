@@ -9,7 +9,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
       pages: write
@@ -17,14 +17,15 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
-        node-version: '18'
+        node-version: "22"
+        package-manager-cache: false
 
     - name: Install Mintlify CLI
       run: npm install -g mintlify
@@ -34,10 +35,10 @@ jobs:
 
     - name: Setup Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: actions/configure-pages@v4
+      uses: actions/configure-pages@v5
 
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
         echo "Mintlify documentation will be deployed automatically when connected to Mintlify Cloud"
-        echo "For GitHub Pages deployment, you may need to configure static site generation" 
+        echo "For GitHub Pages deployment, you may need to configure static site generation"
